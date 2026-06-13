@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XML Syntax Checker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <section class="lab-section">
+      <div class="lab-header">
+        <div>
+          <p class="eyebrow">Try it</p>
+          <h1>Paste XML and check the syntax</h1>
+        </div>
+        <button id="resetSample" type="button">Load sample</button>
+      </div>
+
+      <div class="validation-note">
+        This checker tests whether XML is <strong>well-formed</strong>. Full <strong>valid</strong> checking needs a DTD or XSD validator.
+      </div>
+
+      <div class="lab-grid">
+        <label class="xml-input-wrap" for="xmlInput">
+          <span>XML input</span>
+          <textarea id="xmlInput" spellcheck="false"></textarea>
+        </label>
+
+        <aside class="result-card" id="resultCard" aria-live="polite">
+          <div class="result-state">
+            <span class="result-icon" id="resultIcon"></span>
+            <div>
+              <h2 id="resultTitle">Checking XML</h2>
+              <p id="resultMessage">Paste or edit XML to see the result.</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
