@@ -12,6 +12,7 @@ const xmlInput = document.querySelector("#xmlInput");
 const resultCard = document.querySelector("#resultCard");
 const resultTitle = document.querySelector("#resultTitle");
 const resultMessage = document.querySelector("#resultMessage");
+const pasteXml = document.querySelector("#pasteXml");
 const resetSample = document.querySelector("#resetSample");
 
 function parseXml(xmlText) {
@@ -60,6 +61,30 @@ function setValidation(result) {
 
 xmlInput.addEventListener("input", () => {
   setValidation(parseXml(xmlInput.value));
+});
+
+pasteXml.addEventListener("click", async () => {
+  if (!navigator.clipboard?.readText) {
+    resultCard.classList.remove("good");
+    resultCard.classList.add("bad");
+    resultTitle.textContent = "Paste blocked";
+    resultMessage.textContent = "Use Ctrl+V in the XML input box. This browser does not allow direct clipboard access here.";
+    xmlInput.focus();
+    return;
+  }
+
+  try {
+    const clipboardText = await navigator.clipboard.readText();
+    xmlInput.value = clipboardText;
+    setValidation(parseXml(clipboardText));
+    xmlInput.focus();
+  } catch (error) {
+    resultCard.classList.remove("good");
+    resultCard.classList.add("bad");
+    resultTitle.textContent = "Paste permission needed";
+    resultMessage.textContent = "Allow clipboard access, or click the XML input box and press Ctrl+V.";
+    xmlInput.focus();
+  }
 });
 
 resetSample.addEventListener("click", () => {

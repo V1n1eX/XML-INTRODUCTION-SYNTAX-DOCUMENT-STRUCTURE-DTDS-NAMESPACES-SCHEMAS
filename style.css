@@ -103,6 +103,13 @@ h1 {
   letter-spacing: 0;
 }
 
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
 button {
   min-width: 122px;
   height: 42px;
@@ -118,6 +125,10 @@ button {
 button:hover {
   border-color: var(--accent);
   box-shadow: 0 0 28px rgba(73, 229, 255, 0.24);
+}
+
+#pasteXml {
+  background: linear-gradient(135deg, rgba(73, 229, 255, 0.24), rgba(66, 245, 167, 0.16));
 }
 
 .validation-note {
@@ -253,6 +264,15 @@ textarea:focus {
 
   .lab-header {
     flex-direction: column;
+  }
+
+  .button-row {
+    width: 100%;
+    justify-content: stretch;
+  }
+
+  .button-row button {
+    flex: 1 1 150px;
   }
 
   textarea {
